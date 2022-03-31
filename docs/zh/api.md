@@ -841,7 +841,7 @@ Bot自己的实体. 见 `Entity`.
 
 #### bot.players
 
-Map of username to people playing the game.
+返回在游戏中玩家名字的Map
 
 #### bot.isRaining
 
@@ -851,18 +851,16 @@ Map of username to people playing the game.
 将等于0。 当开始下雨时，该值将增加
 逐渐上升到1。当雨停时，该值逐渐减小回0。
 
-Each time `bot.rainState` is changed, the "weatherUpdate" event is emitted.
+每次 `bot.rainState` 被改变时, "weatherUpdate" 事件都会被触发。
 
 #### bot.thunderState
 
-A number indicating the current thunder level. When there isn't a thunderstorm, this
-will be equal to 0. When a thunderstorm starts, this value will increase
-gradually up to 1. When the thunderstorm stops, this value gradually decreases back to 0.
+一个代表当前雷击等级的数字。 当没有雷暴时，这个数字会是0。 当雷暴开始时, 这个值会渐渐增长至1. 当雷暴停止时, 这个数字会渐渐回到0。
 
-Each time `bot.thunderState` is changed, the "weatherUpdate" event is emitted.
+每次 `bot.thunderState` 被改变时, "weatherUpdate"事件都会被触发。
 
-This is the same as `bot.rainState`, but for thunderstorms.
-For thunderstorms, both `bot.rainState` and `bot.thunderState` will change.
+这和`bot.rainState`基本相同, 只不过是用于表示雷暴的.
+当雷暴发生时， `bot.rainState` 和 `bot.thunderState` 都会被改变。
 
 #### bot.chatPatterns
 
@@ -925,7 +923,7 @@ Same as from server.properties.
 
 #### bot.experience.progress
 
-Between 0 and 1 - amount to get to the next level.
+一个在0到1之间的值，表示某一等级提升的过程。
 
 #### bot.health
 
@@ -937,13 +935,11 @@ Between 0 and 1 - amount to get to the next level.
 
 #### bot.foodSaturation
 
-Food saturation acts as a food "overcharge". Food values will not decrease
-while the saturation is over zero. Players logging in automatically get a
-saturation of 5.0. Eating food increases the saturation as well as the food bar.
+表示饱食度的过饱和度（也就是我们常说的隐藏饱食度）。 当过饱和度大于0时，饱食度不会下降。 玩家登陆时过饱食度自动被设置为5.0. 吃食物会同时增加饱食度和过饱食度
 
 #### bot.oxygenLevel
 
-Number in the range [0, 20] respresenting the number of water-icons known as oxygen level.
+一个范围在 [0, 20] 之间的数字。表示氧气数值。
 
 #### bot.physics
 
@@ -960,19 +956,19 @@ abstraction over `bot.clickWindow(slot, 1, 0)`
 
 #### bot.time.doDaylightCycle
 
-Whether or not the gamerule doDaylightCycle is true or false.
+返回游戏规则(gamerule) doDaylightCycle 的bool值(true/false)
 
 #### bot.time.bigTime
 
-The total number of ticks since day 0.
+从第0天开始的服务器总tick数
 
-This value is of type BigInt and is accurate even at very large values. (more than 2^51 - 1 ticks)
+这个值的数据类型是BigInt, 即使在数值非常大的时候也能保持精确 (大于 2^51 - 1 ticks)
 
 #### bot.time.time
 
-The total numbers of ticks since day 0.
+从第0天开始的服务器总tick数
 
-Because the Number limit of Javascript is at 2^51 - 1 bot.time.time becomes inaccurate higher than this limit and the use of bot.time.bigTime is recommended.
+因为javascript的Number类型的打小限制是2^51 - 1，bot.time.time becomes inaccurate higher than this limit and the use of bot.time.bigTime is recommended.
 Realistically though you'll probably never need to use bot.time.bigTime as it will only reach 2^51 - 1 ticks naturally after ~14280821 real years.
 
 #### bot.time.timeOfDay
